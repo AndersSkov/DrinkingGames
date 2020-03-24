@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".IndividualGame">
+
+    <TextView
+        android:id="@+id/nameOfGameIndividual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NAME"
+        android:textColor="@color/black"
+        android:textSize="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true">
+    </TextView>
+
+    <TextView
+        android:id="@+id/requirementsIndividual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:text="Rekvisitter:"
+        android:layout_below="@+id/nameOfGameIndividual">
+    </TextView>
+    <TextView
+        android:id="@+id/requirementsOverride"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/requirementsIndividual"
+        android:text="requirements"
+        android:textSize="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/drinkingEff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Druk faktor: "
+        android:textColor="@color/black"
+        android:layout_marginLeft="15dp"
+        android:textSize="25dp"
+        android:layout_below="@+id/requirementsOverride">
+    </TextView>
+
+    <TextView
+        android:id="@+id/drinkingEffOverride"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="drinkingEffOverride"
+        android:textSize="25dp"
+        android:layout_toRightOf="@id/drinkingEff"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/requirementsOverride">
+    </TextView>
+
+    <TextView
+        android:id="@+id/regler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="Regler:"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:layout_below="@+id/drinkingEff">
+    </TextView>
+    <TextView
+        android:id="@+id/reglerOverride"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/regler"
+        android:text="rules"
+        android:textSize="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:scrollbars = "vertical">
+    </TextView>
+
+</RelativeLayout>
