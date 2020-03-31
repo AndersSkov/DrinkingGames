@@ -59,6 +59,7 @@
         android:textSize="25dp"
         android:layout_toRightOf="@id/drinkingEff"
         android:layout_marginLeft="10dp"
+        android:textColor="@color/red"
         android:layout_below="@+id/requirementsOverride">
     </TextView>
 
