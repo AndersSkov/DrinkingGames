@@ -6,14 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".IndividualGame">
+    tools:context=".IndividualGame"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/nameOfGameIndividual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NAME"
-        android:textColor="@color/black"
+        android:textColor="@color/mærsk"
         android:textSize="40dp"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true">

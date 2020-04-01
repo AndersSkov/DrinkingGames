@@ -5,22 +5,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/white">
 
 
     <Button
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/showSelectedGamesButton"
-        android:text="Show selected Games">
+        android:text="Show selected Games"
+        android:background="@drawable/button_shape_small"
+        android:backgroundTint="@color/mærsk"
+        android:textColor="@color/white">
     </Button>
 
     <Button
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/showAllGamesButton"
         android:text="show all games"
-        android:layout_alignParentRight="true">
+        android:layout_alignParentRight="true"
+        android:background="@drawable/button_shape_small"
+        android:backgroundTint="@color/mærsk"
+        android:textColor="@color/white">
     </Button>
 
 
@@ -29,6 +38,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="@color/mærsk"
+        android:textColor="@color/white"
         android:text="Pick a random game">
     </Button>
 
@@ -42,7 +54,8 @@
         android:paddingBottom="20dp"
         android:textSize="30dp"
         android:textColor="@color/black"
-        android:visibility="invisible">
+        android:visibility="invisible"
+        android:clickable="true">
     </TextView>
 
 

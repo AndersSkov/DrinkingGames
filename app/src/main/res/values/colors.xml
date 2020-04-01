@@ -6,5 +6,6 @@
     <color name="black">#000000</color>
     <color name="red">#FF0000</color>
     <color name="darkRed">#8B0000</color>
+    <color name="white">#FFFEFFFF</color>
     <color name="mærsk">#28ACE2</color>
 </resources>

@@ -53,6 +53,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        allGamesButton = findViewById(R.id.showAllGamesButton);
+        allGamesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AllGames.class);
+                startActivity(intent);
+            }
+        });
+
         randomGameButton = findViewById(R.id.randomGameButton);
         randomGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,24 +146,32 @@ public class MainActivity extends AppCompatActivity {
         db.collection("games").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                    for(QueryDocumentSnapshot document : queryDocumentSnapshots){
-                        String name  = document.getData().get("name").toString();
-                        String rules = document.getData().get("rules").toString();
-                        String drinkingEfficiency = document.getData().get("drinkingEfficiency").toString();
-                        String requirements = document.getData().get("requirements").toString();
-                        String tag = document.getData().get("tag").toString();
-                        if(globalTag.contains(tag) || globalTag.isEmpty()) {
-                            games.add(new ModelGames(drinkingEfficiency, name, requirements, rules, tag));
+                for(QueryDocumentSnapshot document : queryDocumentSnapshots){
+                    String name  = document.getData().get("name").toString();
+                    String rules = document.getData().get("rules").toString();
+                    String drinkingEfficiency = document.getData().get("drinkingEfficiency").toString();
+                    String requirements = document.getData().get("requirements").toString();
+                    String tag = document.getData().get("tag").toString();
+                    if(globalTag.contains(tag) || globalTag.isEmpty()) {
+                        games.add(new ModelGames(drinkingEfficiency, name, requirements, rules, tag));
+                    }
+                }
+                if(games.size() == 0){
+                    randomGameTv.setText("Intet tilgængeligt spil");
+                    randomGameTv.setVisibility(View.VISIBLE);
+                } else {
+                    final ModelGames randomGame = games.get(random.nextInt(games.size()));
+                    randomGameTv.setText(randomGame.getName());
+                    randomGameTv.setVisibility(View.VISIBLE);
+                    randomGameTv.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(MainActivity.this, IndividualGame.class);
+                            intent.putExtra("ModelGame", randomGame);
+                            startActivity(intent);
                         }
-                    }
-                    if(games.size() == 0){
-                        randomGameTv.setText("Intet tilgængeligt spil");
-                        randomGameTv.setVisibility(View.VISIBLE);
-                    } else {
-                        String randomGame = games.get(random.nextInt(games.size())).getName();
-                        randomGameTv.setText(randomGame);
-                        randomGameTv.setVisibility(View.VISIBLE);
-                    }
+                    });
+                }
             }
         });
     }
