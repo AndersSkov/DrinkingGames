@@ -1,12 +1,13 @@
 package com.example.drinkinggames;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.SearchView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -16,8 +17,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GamesList extends AppCompatActivity {
-
+public class SelectedGames extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     RecyclerView recyclerViewGames;
@@ -27,16 +27,19 @@ public class GamesList extends AppCompatActivity {
     GamesListAdapter gamesListAdapter;
 
     SearchView searchBar;
+    private String globalTag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_games_list);
+        setContentView(R.layout.activity_selected_games);
+
+        Intent intent = getIntent();
+        globalTag = intent.getStringExtra("globalTag");
 
         games = new ArrayList<>();
 
         recyclerViewGames = findViewById(R.id.RecyclerView);
-
 
         gamesLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerViewGames.setLayoutManager(gamesLayoutManager);
@@ -69,6 +72,7 @@ public class GamesList extends AppCompatActivity {
         });
     }
 
+
     private void searchGames(final String s) {
         if(s.isEmpty()){
             return;
@@ -85,12 +89,15 @@ public class GamesList extends AppCompatActivity {
                         String rules = document.getData().get("rules").toString();
                         String drinkingEfficiency = document.getData().get("drinkingEfficiency").toString();
                         String requirements = document.getData().get("requirements").toString();
-                        if(name.toLowerCase().contains(s.toLowerCase())) {
-                            games.add(new ModelGames(drinkingEfficiency, name, requirements, rules));
+                        String tag = document.getData().get("tag").toString();
+                        if(globalTag.contains(tag) || globalTag.isEmpty()) {
+                            if (name.toLowerCase().contains(s.toLowerCase())) {
+                                games.add(new ModelGames(drinkingEfficiency, name, requirements, rules, tag));
+                            }
                         }
                     }
                 }
-                gamesListAdapter = new GamesListAdapter(games, GamesList.this);
+                gamesListAdapter = new GamesListAdapter(games, SelectedGames.this);
                 recyclerViewGames.setAdapter(gamesListAdapter);
             }
         });
@@ -109,10 +116,13 @@ public class GamesList extends AppCompatActivity {
                         String rules = document.getData().get("rules").toString();
                         String drinkingEfficiency = document.getData().get("drinkingEfficiency").toString();
                         String requirements = document.getData().get("requirements").toString();
-                        games.add(new ModelGames(drinkingEfficiency, name, requirements, rules));
+                        String tag = document.getData().get("tag").toString();
+                        if(globalTag.contains(tag) || globalTag.isEmpty()) {
+                            games.add(new ModelGames(drinkingEfficiency, name, requirements, rules, tag));
+                        }
                     }
                 }
-                gamesListAdapter = new GamesListAdapter(games, GamesList.this);
+                gamesListAdapter = new GamesListAdapter(games, SelectedGames.this);
                 recyclerViewGames.setAdapter(gamesListAdapter);
             }
         });

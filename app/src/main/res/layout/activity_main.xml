@@ -11,8 +11,16 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/gamesListButton"
-        android:text="Games List">
+        android:id="@+id/showSelectedGamesButton"
+        android:text="Show selected Games">
+    </Button>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/showAllGamesButton"
+        android:text="show all games"
+        android:layout_alignParentRight="true">
     </Button>
 
 
@@ -37,4 +45,82 @@
         android:visibility="invisible">
     </TextView>
 
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_centerHorizontal="true"
+    android:layout_below="@id/randomGameButton">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingEnd="40dp">
+        <CheckBox
+            android:id="@+id/checkSpillekort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spillekort"
+            android:onClick="updateTags">
+        </CheckBox>
+        <CheckBox
+            android:id="@+id/checkTerninger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Terninger"
+            android:onClick="updateTags">
+        </CheckBox>
+        <CheckBox
+            android:id="@+id/checkFodbold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fodbold"
+            android:onClick="updateTags">
+        </CheckBox>
+        <CheckBox
+            android:id="@+id/checkKopper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kopper"
+            android:onClick="updateTags">
+        </CheckBox>
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+        <CheckBox
+            android:id="@+id/checkBong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bong"
+            android:onClick="updateTags">
+        </CheckBox>
+        <CheckBox
+            android:id="@+id/checkBordtennisbold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bordtennisbold"
+            android:onClick="updateTags">
+        </CheckBox>
+        <CheckBox
+            android:id="@+id/checkUNO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UNO"
+            android:onClick="updateTags">
+        </CheckBox>
+        <CheckBox
+            android:id="@+id/checkFrisbee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frisbee"
+            android:onClick="updateTags">
+        </CheckBox>
+</LinearLayout>
+
+</LinearLayout>
 </RelativeLayout>
+
